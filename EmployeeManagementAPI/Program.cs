@@ -1,3 +1,5 @@
+using EmployeeManagementAPI.Models;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// DbContext
+builder.Services.AddDbContext<EManagementContext>(
+    o => o.UseNpgsql(connectionString: builder.Configuration.GetConnectionString("EmployeeManagementDb")));
 
 // Enable CORS
 builder.Services.AddCors(c =>
