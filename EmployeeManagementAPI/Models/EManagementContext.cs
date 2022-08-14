@@ -10,5 +10,6 @@ namespace EmployeeManagementAPI.Models
         }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public IEnumerable<Department> Department { get; internal set; }
     } 
 }
