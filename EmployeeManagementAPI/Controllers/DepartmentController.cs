@@ -19,11 +19,21 @@ namespace EmployeeManagementAPI.Controllers
 
         // GET: api/Department
         [HttpGet]
-        [Route("department")]
-        public IEnumerable<Department> GetDepartment()
+        public IActionResult Get()
         {
-            return _context.Department;
+            return Ok(_context.Departments);
         }
 
+        // GET: api/Department/5
+        [HttpGet("{id}", Name = "GetDepartment")]
+        public IActionResult Get(int id)
+        {
+            var department = _context.Departments.Find(id);
+            if (department == null)
+            {
+                return NotFound();
+            }
+            return Ok(department);
+        }
     }
 }
