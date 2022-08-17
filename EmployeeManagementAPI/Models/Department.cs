@@ -6,6 +6,6 @@
         public string DepartmentName { get; set; }
 
         // Navigation
-        public List<Employee> Employees { get; set; }
+        public List<Employee>? Employees { get; set; }
     }
 }
